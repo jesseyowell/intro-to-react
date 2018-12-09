@@ -17,11 +17,23 @@
          					<h1>Hello World!</h1>
          				</div>
          			);
-         	}
+         	  }
+         }
+
+            class QuickList extends React.Component {
+                render() {
+                    return (
+                        <ol>
+                            <li>Eat ramen</li>
+                            <li>Eat tacos</li>
+                            <li>Eat cheese</li>
+                        </ol>
+                    );
+                }
          }
 
          ReactDOM.render(
-         	<Greeting />, document.getElementById('app')
+         	<QuickList />, document.getElementById('app')
          	);
      </script>
         </body>
