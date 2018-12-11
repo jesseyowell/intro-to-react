@@ -6,39 +6,49 @@
 
 	<body>
 	<div id="app"></div>
-    <div id="app2"></div>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
          <script type="text/babel">
-         	class Greeting extends React.Component {
-         		render() {
-         			return (
-         				<div>
-         					<h1>Hello World!</h1>
-         				</div>
-         			);
-         	  }
-         }
 
             class QuickList extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        fooditems: 3
+                    }
+                }
+              
                 render() {
                     return (
-                        <ol>
-                            <li>Eat ramen</li>
-                            <li>Eat tacos</li>
-                            <li>Eat cheese</li>
-                        </ol>
+                        <div>
+                         <img src={this.props.image} alt="Gravatar" />
+                         <h2>{this.props.label}</h2>
+                         <h3>Food items: {this.state.fooditems}</h3>
+                          <ol>
+                            <li>{this.props.listItem}</li>
+                            <li>{this.props.listItem2}</li>
+                            <li>{this.props.listItem3}</li>
+                          </ol>
+                        </div>
                     );
                 }
          }
 
+        QuickList.defaultProps = {
+                label: "Jesse's favorite foods"
+        }
+
+        const gravatar = {
+            image: 'https://s.gravatar.com/avatar/0239eea197a81ee5c46beeb0f53bd59d?s=80'
+        }             
+
          ReactDOM.render(
-         	<QuickList />, document.getElementById('app')
+         	<QuickList listItem='eat ramen'
+                       listItem2='eat tacos'
+                       listItem3='eat cheese'
+                       image={gravatar.image} />, document.getElementById('app')
          	);
-         ReactDOM.render(
-            <Greeting />, document.getElementById('app2')
-            );
      </script>
         </body>
 	
