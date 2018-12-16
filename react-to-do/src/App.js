@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <ul>
-            // Below we are sending the state values to props, to be used in the ToDo component 
+           { /* Below we are sending the state values to props, to be used in the ToDo component */ }
 
             { this.state.todos.map( (todo, index) =>
               <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } />
