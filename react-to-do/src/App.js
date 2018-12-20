@@ -27,6 +27,14 @@ class App extends Component {
     this.setState({ todos: [...this.state.todos, newTodo], newTodoDescription: '' });
   }
 
+  
+  deleteTodo(index) {
+    const todos = this.state.todos;
+    this.setState({ todos: todos.filter((items, i) => {
+      return i !== index; })
+   });
+  }  
+
   handleChange(e) {
     this.setState({ newTodoDescription: e.target.value });
   }
@@ -46,7 +54,7 @@ class App extends Component {
            { /* Below we are sending the state values to props, to be used in the ToDo component */ }
 
             { this.state.todos.map( (todo, index) =>
-              <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />
+              <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } deleteTodo={ () => this.deleteTodo(index) } />
             )}
         </ul> 
         <form onSubmit={ (e) => this.handleSubmit(e) }>
